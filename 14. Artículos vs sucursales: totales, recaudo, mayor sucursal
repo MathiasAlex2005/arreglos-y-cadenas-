@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int ARTICULOS = 5;
+    const int SUCURSALES = 4;
+
+    float precios[ARTICULOS];
+    int cantidades[ARTICULOS][SUCURSALES];
+    int totalArticulos[ARTICULOS] = {0};
+    int totalSucursal[SUCURSALES] = {0};
+    float recaudacionSucursal[SUCURSALES] = {0};
+    float recaudacionEmpresa = 0.0;
+
+    // Leer precios de los 5 artículos
+    cout << "Introduce el precio de los " << ARTICULOS << " artículos:\n";
+    for (int i = 0; i < ARTICULOS; i++) {
+        cout << "Precio del artículo " << i + 1 << ": ";
+        cin >> precios[i];
+    }
+
+    // Leer cantidades vendidas en cada sucursal
+    cout << "\nIntroduce las cantidades vendidas en cada sucursal:\n";
+    for (int i = 0; i < ARTICULOS; i++) {
+        for (int j = 0; j < SUCURSALES; j++) {
+            cout << "Artículo " << i + 1 << " en Sucursal " << j + 1 << ": ";
+            cin >> cantidades[i][j];
+
+            totalArticulos[i] += cantidades[i][j];
+            totalSucursal[j] += cantidades[i][j];
+            recaudacionSucursal[j] += cantidades[i][j] * precios[i];
+            recaudacionEmpresa += cantidades[i][j] * precios[i];
+        }
+    }
+
+    // Mostrar cantidades totales de cada artículo
+    cout << "\nCantidad total vendida de cada artículo:\n";
+    for (int i = 0; i < ARTICULOS; i++) {
+        cout << "Artículo " << i + 1 << ": " << totalArticulos[i] << " unidades\n";
+    }
+
+    // Mostrar la cantidad de artículos vendidos en la sucursal 2
+    cout << "\nCantidad total de artículos en la Sucursal 2: " << totalSucursal[1] << " unidades\n";
+
+    // Mostrar la cantidad del artículo 3 en la sucursal 1
+    cout << "Cantidad del artículo 3 en la Sucursal 1: " << cantidades[2][0] << " unidades\n";
+
+    // Mostrar recaudación total por sucursal
+    cout << "\nRecaudación por sucursal:\n";
+    for (int j = 0; j < SUCURSALES; j++) {
+        cout << "Sucursal " << j + 1 << ": $" << recaudacionSucursal[j] << endl;
+    }
+
+    // Recaudación total de la empresa
+    cout << "\nRecaudación total de la empresa: $" << recaudacionEmpresa << endl;
+
+    // Determinar la sucursal con mayor recaudación
+    int mayorSucursal = 0;
+    for (int j = 1; j < SUCURSALES; j++) {
+        if (recaudacionSucursal[j] > recaudacionSucursal[mayorSucursal]) {
+            mayorSucursal = j;
+        }
+    }
+    cout << "Sucursal con mayor recaudación: Sucursal " << mayorSucursal + 1 << " ($" << recaudacionSucursal[mayorSucursal] << ")\n";
+
+    return 0;
+}
