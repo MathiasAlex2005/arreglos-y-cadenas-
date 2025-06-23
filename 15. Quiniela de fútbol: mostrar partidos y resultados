@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    const int PARTIDOS = 15;
+    string equipos[PARTIDOS][2];      // Equipos: columna 0 = local, columna 1 = visitante
+    int resultados[PARTIDOS][2];      // Resultados: columna 0 = goles local, columna 1 = goles visitante
+
+    // Entrada de datos
+    cout << "⚽ INGRESO DE DATOS PARA LA QUINIELA DE FUTBOL ⚽\n";
+    for (int i = 0; i < PARTIDOS; i++) {
+        cout << "\nPartido " << i + 1 << ":\n";
+        cout << "Nombre del equipo local: ";
+        getline(cin, equipos[i][0]);
+        cout << "Nombre del equipo visitante: ";
+        getline(cin, equipos[i][1]);
+
+        cout << "Goles de " << equipos[i][0] << ": ";
+        cin >> resultados[i][0];
+        cout << "Goles de " << equipos[i][1] << ": ";
+        cin >> resultados[i][1];
+        cin.ignore(); // Limpiar salto de línea
+    }
+
+    // Mostrar quiniela
+    cout << "\n📋 RESULTADOS DE LA JORNADA:\n";
+    for (int i = 0; i < PARTIDOS; i++) {
+        string marcador;
+        if (resultados[i][0] > resultados[i][1]) {
+            marcador = "1 (gana local)";
+        } else if (resultados[i][0] < resultados[i][1]) {
+            marcador = "2 (gana visitante)";
+        } else {
+            marcador = "X (empate)";
+        }
+
+        cout << i + 1 << ". " << equipos[i][0] << " " << resultados[i][0]
+             << " - " << resultados[i][1] << " " << equipos[i][1]
+             << " -> " << marcador << endl;
+    }
+
+    return 0;
+}
