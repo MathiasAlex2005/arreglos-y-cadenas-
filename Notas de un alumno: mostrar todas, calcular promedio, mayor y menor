@@ -1,0 +1,38 @@
+#include <iostream>
+#include <limits>  
+
+using namespace std;
+
+int main() {
+    const int TAM = 5;
+    float notas[TAM];
+    float suma = 0.0;
+    float mayor = 0.0;
+    float menor = 10.0;
+
+    cout << "Ingrese las 5 notas del alumno (valores entre 0 y 10):\n";
+    for (int i = 0; i < TAM; i++) {
+        do {
+            cout << "Nota " << i + 1 << ": ";
+            cin >> notas[i];
+            if (notas[i] < 0 || notas[i] > 10) {
+                cout << "⚠️ Valor inválido. Debe estar entre 0 y 10.\n";
+            }
+        } while (notas[i] < 0 || notas[i] > 10);
+
+        suma += notas[i];
+        if (notas[i] > mayor) mayor = notas[i];
+        if (notas[i] < menor) menor = notas[i];
+    }
+
+    cout << "\nNotas ingresadas:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << "Nota " << i + 1 << ": " << notas[i] << endl;
+    }
+
+    cout << "\nNota media: " << suma / TAM << endl;
+    cout << "Nota más alta: " << mayor << endl;
+    cout << "Nota más baja: " << menor << endl;
+
+    return 0;
+}
