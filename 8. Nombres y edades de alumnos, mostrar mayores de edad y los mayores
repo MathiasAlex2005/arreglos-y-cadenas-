@@ -1,0 +1,58 @@
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+int main() {
+    vector<string> nombres;
+    vector<int> edades;
+    string nombre;
+    int edad;
+
+    // Entrada de datos
+    cout << "Introduce el nombre y la edad de cada alumno.\n";
+    cout << "Para finalizar, introduce un asterisco (*) como nombre.\n";
+
+    while (true) {
+        cout << "Nombre: ";
+        getline(cin, nombre);
+
+        if (nombre == "*") break;
+
+        cout << "Edad: ";
+        cin >> edad;
+        cin.ignore();  // Limpiar el buffer del salto de línea
+
+        nombres.push_back(nombre);
+        edades.push_back(edad);
+    }
+
+    // Mostrar alumnos mayores de edad
+    cout << "\nAlumnos mayores de edad:\n";
+    bool hayMayores = false;
+    for (size_t i = 0; i < edades.size(); i++) {
+        if (edades[i] >= 18) {
+            cout << nombres[i] << " (" << edades[i] << " años)\n";
+            hayMayores = true;
+        }
+    }
+    if (!hayMayores) {
+        cout << "Ningún alumno es mayor de edad.\n";
+    }
+
+    // Encontrar la edad máxima
+    int edadMaxima = -1;
+    for (int e : edades) {
+        if (e > edadMaxima) edadMaxima = e;
+    }
+
+    // Mostrar alumnos con la edad máxima
+    cout << "\nAlumno(s) con mayor edad (" << edadMaxima << " años):\n";
+    for (size_t i = 0; i < edades.size(); i++) {
+        if (edades[i] == edadMaxima) {
+            cout << nombres[i] << endl;
+        }
+    }
+
+    return 0;
+}
