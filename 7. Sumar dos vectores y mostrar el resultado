@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int TAM = 5;
+    int vector1[TAM], vector2[TAM], vector3[TAM];
+
+    // Pedir valores para vector1
+    cout << "Ingrese los elementos de vector1:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << "vector1[" << i << "] = ";
+        cin >> vector1[i];
+    }
+
+    // Pedir valores para vector2
+    cout << "\nIngrese los elementos de vector2:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << "vector2[" << i << "] = ";
+        cin >> vector2[i];
+    }
+
+    // Calcular la suma elemento a elemento
+    for (int i = 0; i < TAM; i++) {
+        vector3[i] = vector1[i] + vector2[i];
+    }
+
+    // Mostrar el resultado
+    cout << "\nResultado (vector3 = vector1 + vector2):\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << "vector3[" << i << "] = " << vector3[i] << endl;
+    }
+
+    return 0;
+}
