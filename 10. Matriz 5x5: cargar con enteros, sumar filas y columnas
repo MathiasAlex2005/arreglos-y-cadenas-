@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int TAM = 5;
+    int matriz[TAM][TAM];
+    int sumaFilas[TAM] = {0};
+    int sumaColumnas[TAM] = {0};
+
+    // Cargar la matriz con datos ingresados por el usuario
+    cout << "Ingrese los valores enteros para la matriz 5x5:\n";
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            cout << "Elemento [" << i << "][" << j << "]: ";
+            cin >> matriz[i][j];
+        }
+    }
+
+    // Calcular la suma de filas y columnas
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            sumaFilas[i] += matriz[i][j];
+            sumaColumnas[j] += matriz[i][j];
+        }
+    }
+
+    // Mostrar matriz
+    cout << "\nContenido de la matriz:\n";
+    for (int i = 0; i < TAM; i++) {
+        for (int j = 0; j < TAM; j++) {
+            cout << matriz[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    // Mostrar suma de cada fila
+    cout << "\nSuma de cada fila:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << "Fila " << i << ": " << sumaFilas[i] << endl;
+    }
+
+    // Mostrar suma de cada columna
+    cout << "\nSuma de cada columna:\n";
+    for (int j = 0; j < TAM; j++) {
+        cout << "Columna " << j << ": " << sumaColumnas[j] << endl;
+    }
+
+    return 0;
+}
