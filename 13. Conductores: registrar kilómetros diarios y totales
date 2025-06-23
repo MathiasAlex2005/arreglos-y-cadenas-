@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    const int CONDUCTORES = 3;  // Puedes cambiar este número según lo necesites
+    const int DIAS_SEMANA = 7;
+    string nombre[CONDUCTORES];
+    int kms[CONDUCTORES][DIAS_SEMANA];
+    int total_kms[CONDUCTORES] = {0};
+
+    // Leer nombres y kilómetros por día
+    for (int i = 0; i < CONDUCTORES; i++) {
+        cout << "Nombre del conductor " << i + 1 << ": ";
+        getline(cin, nombre[i]);
+
+        cout << "Introduce los kilómetros conducidos por " << nombre[i] << " durante la semana:\n";
+        for (int j = 0; j < DIAS_SEMANA; j++) {
+            cout << "  Día " << j + 1 << ": ";
+            cin >> kms[i][j];
+            total_kms[i] += kms[i][j];
+        }
+        cin.ignore(); // Limpiar el buffer del salto de línea
+    }
+
+    // Mostrar resultados
+    cout << "\nResumen de kilómetros por conductor:\n";
+    for (int i = 0; i < CONDUCTORES; i++) {
+        cout << nombre[i] << " recorrió un total de " << total_kms[i] << " km.\n";
+    }
+
+    return 0;
+}
