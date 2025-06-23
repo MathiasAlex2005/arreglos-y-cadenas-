@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdlib>  
+#include <ctime>    
+
+using namespace std;
+
+int main() {
+    const int TAM = 10;
+    int vector_numeros[TAM];
+
+    srand(time(0));
+
+    for (int i = 0; i < TAM; i++) {
+        vector_numeros[i] = rand() % 10 + 1;
+    }
+
+    cout << "Elemento | Cuadrado | Cubo\n";
+    cout << "----------------------------\n";
+    for (int i = 0; i < TAM; i++) {
+        int num = vector_numeros[i];
+        cout << "   " << num << "     |    "
+             << num * num << "     |   "
+             << num * num * num << endl;
+    }
+
+    return 0;
+}
