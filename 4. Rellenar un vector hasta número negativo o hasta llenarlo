@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int TAM = 10;
+    int numeros[TAM];
+    int contador = 0;
+
+    cout << "Introduce hasta 10 números enteros (un número negativo para detener):\n";
+    
+    while (contador < TAM) {
+        int valor;
+        cout << "Número " << contador + 1 << ": ";
+        cin >> valor;
+
+        if (valor < 0) {
+            cout << "Número negativo ingresado. Finalizando entrada...\n";
+            break;
+        }
+
+        numeros[contador] = valor;
+        contador++;
+    }
+
+    cout << "\nNúmeros ingresados:\n";
+    for (int i = 0; i < contador; i++) {
+        cout << numeros[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
