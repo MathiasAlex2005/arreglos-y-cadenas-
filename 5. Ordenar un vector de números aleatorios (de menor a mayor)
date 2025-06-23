@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cstdlib>  
+#include <ctime>    
+
+using namespace std;
+
+int main() {
+    const int TAM = 10;
+    int numeros[TAM];
+
+    // Inicializar la semilla para números aleatorios
+    srand(time(0));
+
+    // Llenar el vector con valores aleatorios entre 1 y 100
+    for (int i = 0; i < TAM; i++) {
+        numeros[i] = rand() % 100 + 1;
+    }
+
+    // Mostrar valores originales
+    cout << "Valores generados:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << numeros[i] << " ";
+    }
+    cout << "\n";
+
+    // Ordenar con burbuja (Bubble Sort)
+    for (int i = 0; i < TAM - 1; i++) {
+        for (int j = 0; j < TAM - i - 1; j++) {
+            if (numeros[j] > numeros[j + 1]) {
+                // Intercambio
+                int temp = numeros[j];
+                numeros[j] = numeros[j + 1];
+                numeros[j + 1] = temp;
+            }
+        }
+    }
+
+    // Mostrar valores ordenados
+    cout << "Valores ordenados de menor a mayor:\n";
+    for (int i = 0; i < TAM; i++) {
+        cout << numeros[i] << " ";
+    }
+    cout << "\n";
+
+    return 0;
+}
