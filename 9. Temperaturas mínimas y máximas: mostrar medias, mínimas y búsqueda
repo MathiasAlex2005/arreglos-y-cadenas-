@@ -1,0 +1,60 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    const int DIAS = 5;
+    float tempMin[DIAS], tempMax[DIAS], tempMedia[DIAS];
+
+    // Leer temperaturas mínimas y máximas
+    cout << "Introduce las temperaturas mínima y máxima de 5 días:\n";
+    for (int i = 0; i < DIAS; i++) {
+        cout << "\nDía " << i + 1 << ":\n";
+        cout << "Temperatura mínima: ";
+        cin >> tempMin[i];
+        cout << "Temperatura máxima: ";
+        cin >> tempMax[i];
+        tempMedia[i] = (tempMin[i] + tempMax[i]) / 2;
+    }
+
+    // Mostrar temperatura media de cada día
+    cout << "\nTemperatura media de cada día:\n";
+    for (int i = 0; i < DIAS; i++) {
+        cout << "Día " << i + 1 << ": " << tempMedia[i] << " grados\n";
+    }
+
+    // Encontrar la temperatura mínima global
+    float minGeneral = tempMin[0];
+    for (int i = 1; i < DIAS; i++) {
+        if (tempMin[i] < minGeneral) {
+            minGeneral = tempMin[i];
+        }
+    }
+
+    // Mostrar días con la temperatura más baja
+    cout << "\nDía(s) con la temperatura más baja (" << minGeneral << " grados):\n";
+    for (int i = 0; i < DIAS; i++) {
+        if (tempMin[i] == minGeneral) {
+            cout << "Día " << i + 1 << endl;
+        }
+    }
+
+    // Buscar días con temperatura máxima igual a un valor dado
+    float consultaMax;
+    cout << "\nIntroduce una temperatura máxima para buscar: ";
+    cin >> consultaMax;
+    bool encontrado = false;
+
+    cout << "Día(s) cuya temperatura máxima fue " << consultaMax << " grados:\n";
+    for (int i = 0; i < DIAS; i++) {
+        if (tempMax[i] == consultaMax) {
+            cout << "Día " << i + 1 << endl;
+            encontrado = true;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "❗ Ningún día tuvo esa temperatura máxima.\n";
+    }
+
+    return 0;
+}
